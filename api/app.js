@@ -4,6 +4,9 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let cors = require("cors");
+let http = require("http");
+let querystring = require("querystring");
+let request = require("request");
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');

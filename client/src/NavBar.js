@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 
 class NavBar extends Component {
     render() {
@@ -8,7 +9,7 @@ class NavBar extends Component {
 
                 <div className="collapse navbar-collapse">
                     <ul style={{listStyleType: "none"}} className="collapse navbar-collapse mr-auto mt-2">
-                        <li className="nav-item">Login to Spotify</li>
+                        <li className="nav-item"><Link to="/login">Login to Spotify</Link></li>
                     </ul>
                 </div>
             </nav>

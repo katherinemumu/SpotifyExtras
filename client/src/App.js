@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import spotify_logo from "./spotify_logo.svg"
 import "./App.css";
+import NavBar from "./NavBar";
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class App extends Component {
   render() {
     return (
         <div className="App">
+          <NavBar />
+
           <header className="App-header">
             <img src={spotify_logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Welcome to SpotifyExtras</h1>

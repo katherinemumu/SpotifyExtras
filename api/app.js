@@ -9,7 +9,7 @@ let querystring = require("querystring");
 let request = require("request");
 
 let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
+let usersRouter = require('./routes/userinfo');
 let testAPIRouter = require("./routes/testAPI");
 let loginRouter = require("./routes/login");
 

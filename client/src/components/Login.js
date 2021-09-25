@@ -3,7 +3,7 @@ import '../Login.css'
 
 class Login extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     componentDidMount() {
@@ -12,7 +12,9 @@ class Login extends Component {
 
     render() {
         return (
-            <h1>Just a second :) Redirecting... </h1>
+            <div>
+                <h1>Just a second :) Redirecting... </h1>
+            </div>
         );
     }
 }

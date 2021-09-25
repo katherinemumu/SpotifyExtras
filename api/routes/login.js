@@ -8,6 +8,8 @@ let client_id = '3cddd949ae4643bb9b9845bd1ce64368'; // Your client id
 let redirect_uri = 'http://localhost:9000/login/callback';
 let stateKey = 'spotify_auth_state';
 
+let content = {};
+
 router.get("/", (req, res, next) => {
     let state = '1234567890123456'
     let scope = 'user-read-private user-read-email';
@@ -21,11 +23,13 @@ router.get("/", (req, res, next) => {
             redirect_uri: redirect_uri,
             state: state
         }));
+    console.log("******IN LOGIN******")
 });
 
 router.get('/callback', function(req, res) {
     // your application requests refresh and access tokens
     // after checking the state parameter
+    console.log("******IN CALLBACK******")
 
     var code = req.query.code || null;
     var state = req.query.state || null;
@@ -38,6 +42,7 @@ router.get('/callback', function(req, res) {
             }));
     } else {
         res.clearCookie(stateKey);
+        // console.log("CODE", code);
         var authOptions = {
             url: 'https://accounts.spotify.com/api/token',
             form: {
@@ -51,6 +56,7 @@ router.get('/callback', function(req, res) {
             json: true
         };
 
+        console.log("after the code thing");
         request.post(authOptions, function(error, response, body) {
             if (!error && response.statusCode === 200) {
 
@@ -64,16 +70,20 @@ router.get('/callback', function(req, res) {
                 };
 
                 // use the access token to access the Spotify Web API
-                request.get(options, function(error, response, body) {
+                /*request.get(options, function(error, response, body) {
                     console.log(body);
-                });
+                    content = body;
+                });*/
 
+                console.log("after the request");
                 // we can also pass the token to the browser to make requests from there
-                res.redirect('/#' +
+                res.redirect('../?' +
                     querystring.stringify({
                         access_token: access_token,
                         refresh_token: refresh_token
-                    }));
+                    })
+                );
+                console.log("after res.redirect");
             } else {
                 res.redirect('/#' +
                     querystring.stringify({

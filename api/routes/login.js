@@ -3,8 +3,10 @@ let router = express.Router();
 let request = require('request');
 const https = require('https');
 var querystring = require('querystring');
+require('dotenv').config()
 
 let client_id = '3cddd949ae4643bb9b9845bd1ce64368'; // Your client id
+let client_secret = process.env.API_KEY;
 let redirect_uri = 'http://localhost:9000/login/callback';
 let stateKey = 'spotify_auth_state';
 

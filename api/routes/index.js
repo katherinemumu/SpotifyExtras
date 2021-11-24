@@ -1,9 +1,10 @@
 let express = require('express');
 const request = require("request");
+const querystring = require("querystring");
 let router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/auth', function(req, res, next) {
 
   var access_token = req.query.access_token;
   var refresh_token = req.query.refresh_token;
@@ -24,6 +25,13 @@ router.get('/', function(req, res, next) {
       });
 
       // print it out
+
+      res.redirect('http://localhost:3000/userhome?' +
+          querystring.stringify({
+            access_token: access_token,
+            refresh_token: refresh_token
+          })
+      );
     }
 
   res.render('index', { title: 'Express' , res: res});

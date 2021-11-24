@@ -1,6 +1,7 @@
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
+let session = require('cookie-session')
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let cors = require("cors");
@@ -27,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
+app.use('/auth/login', loginRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
 
@@ -46,5 +47,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+/* Set Cookie Settings */
+app.use(
+    session({
+      name: 'session',
+      secret: 'secretKeyWooo',
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+    })
+);
 
 module.exports = app;

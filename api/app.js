@@ -9,16 +9,23 @@ let http = require("http");
 let querystring = require("querystring");
 let request = require("request");
 
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/userinfo');
-let testAPIRouter = require("./routes/testAPI");
-let loginRouter = require("./routes/login");
+let authRouter = require("./routes/auth");
+let indexRouter = require("./routes/index");
 
 let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+/* Set Cookie Settings */
+app.use(
+    session({
+        name: 'session',
+        secret: 'secretKeyWooo',
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+    })
+);
 
 app.use(cors());
 app.use(logger('dev'));
@@ -27,10 +34,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/auth', authRouter);
 app.use('/', indexRouter);
-app.use('/auth/login', loginRouter);
-app.use('/users', usersRouter);
-app.use('/testAPI', testAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,14 +52,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-/* Set Cookie Settings */
-app.use(
-    session({
-      name: 'session',
-      secret: 'secretKeyWooo',
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
-    })
-);
 
 module.exports = app;

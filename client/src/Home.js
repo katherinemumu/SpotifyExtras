@@ -36,7 +36,7 @@ function Home() {
         <div className="App">
             <header className="App-header">
                 <p>You are not logged into Spotify.</p>
-                <a className="App-link" href={"auth/login"}>Login to Spotify</a>
+                <a className="App-link" target="_blank" href={"auth/login"}>Login to Spotify</a>
             </header>
         </div>
     )

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from 'axios';
-import NavBar from "./NavBar";
 import Home from "./Home"
-import Login from "./Login"
 import UserHome from "./UserHome";
 import Loading from "./Loading";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
     const [auth, setAuth] = useState(null);
@@ -22,9 +19,11 @@ function App() {
     console.log(auth);
 
     if(auth == null) {
-        <Loading/>
+        return <Loading/>
     } else if (auth) {
-        <UserHome/>
+        const token = auth.token;
+        console.log("WE CAN LOAD USER HOME NOW", token);
+        return <UserHome auth={auth}/>
     }
     return <Home/>
 }

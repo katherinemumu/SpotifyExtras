@@ -1,26 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class UserHome extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "" };
-    }
+function UserHome(props) {
+    const token = props.auth.token;
 
-    componentDidMount() {
-        fetch("http://localhost:9000/login/userinfo")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res}))
-            .catch(err => err);
-    }
-
-    render() {
-        return (
-            <div>
-                <p>Hello! Welcome to user home!</p>
-                <p>{this.state.apiResponse}</p>
-            </div>
-        );
-    }
+    return (
+        <div className="App">
+            <header className="App-header">
+                <p>Hello!</p>
+            </header>
+        </div>
+    )
 }
 
 export default UserHome;

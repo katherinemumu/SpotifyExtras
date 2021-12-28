@@ -63,19 +63,25 @@ router.get('/callback', function(req, res) {
                 var access_token = body.access_token,
                     refresh_token = body.refresh_token;
 
-                var options = {
-                    url: 'https://api.spotify.com/v1/me',
-                    headers: { 'Authorization': 'Bearer ' + access_token },
-                    json: true
+                const sessionJWTObject = {
+                    token: access_token,
                 };
 
-                // we can also pass the token to the browser to make requests from there
-                res.redirect('../?' +
-                    querystring.stringify({
-                        access_token: access_token,
-                        refresh_token: refresh_token
-                    })
-                );
+                req.session.jwt = jwt.sign(sessionJWTObject, process.env.JWT_SECRET_KEY)
+
+                // var options = {
+                //     url: 'https://api.spotify.com/v1/me',
+                //     headers: { 'Authorization': 'Bearer ' + access_token },
+                //     json: true
+                // };
+                //
+                // // we can also pass the token to the browser to make requests from there
+                // res.redirect('../?' +
+                //     querystring.stringify({
+                //         access_token: access_token,
+                //         refresh_token: refresh_token
+                //     })
+                // );
 
             } else {
                 res.redirect('/#' +

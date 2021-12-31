@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import spotify_logo from "./spotify_logo.svg";
+import React from 'react';
+// import spotify_logo from "./spotify_logo.svg";
 
 // class Home extends Component {
 //     constructor(props) {

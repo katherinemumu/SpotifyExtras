@@ -63,11 +63,15 @@ router.get('/callback', function(req, res) {
                 var access_token = body.access_token,
                     refresh_token = body.refresh_token;
 
+                console.log("ACCESS TOKEN HERE ", access_token);
+
                 const sessionJWTObject = {
                     token: access_token,
                 };
 
                 req.session.jwt = jwt.sign(sessionJWTObject, process.env.JWT_SECRET_KEY)
+
+                console.log("REQ.SESSION.JWT", req.session.jwt);
 
                 // var options = {
                 //     url: 'https://api.spotify.com/v1/me',
@@ -111,7 +115,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/", function(req, res) {
-    console.log("inside auth/");
+    console.log("inside auth/", req.session.jwt);
     res.render('index', { title: 'Express' , res: res});
 });
 

@@ -73,6 +73,8 @@ router.get('/callback', function(req, res) {
 
                 console.log("REQ.SESSION.JWT", req.session.jwt);
 
+                return res.redirect('/');
+
                 // var options = {
                 //     url: 'https://api.spotify.com/v1/me',
                 //     headers: { 'Authorization': 'Bearer ' + access_token },

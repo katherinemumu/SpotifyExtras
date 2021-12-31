@@ -3,12 +3,12 @@ import "./App.css";
 import axios from 'axios';
 import Home from "./Home"
 import UserHome from "./UserHome";
-import Loading from "./Loading";
 
 function App() {
     const [auth, setAuth] = useState(null);
 
     useEffect(() => {
+        console.log("in useEffect");
         axios.get('/auth/current-session').then(({data}) => {
             setAuth(data);
         }).catch(error=>{

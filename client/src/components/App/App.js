@@ -4,6 +4,7 @@ import axios from 'axios';
 import Home from "../Home/Home"
 import UserHome from "../UserHome/UserHome";
 import Loading from "../../Loading";
+import Header from "../Header/Header";
 
 function App() {
     const [auth, setAuth] = useState(null);

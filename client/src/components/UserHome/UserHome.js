@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from "axios";
+import Nav from "../Nav/Nav";
+import './UserHome.css'
 
 function UserHome(props) {
     const token = props.auth.token;
@@ -18,8 +20,9 @@ function UserHome(props) {
 
     return (
         <div className="App">
+            <Nav/>
             <header className="App-header">
-                <p>Hello, {userinfo}!</p>
+                <p className="hello">Hello, {userinfo}!</p>
                 <a className="App-link" target="_blank" href={"auth/logout"}>Logout</a>
             </header>
         </div>

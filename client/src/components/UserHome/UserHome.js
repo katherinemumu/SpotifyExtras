@@ -12,7 +12,7 @@ function UserHome(props) {
             setUserInfo(data);
             console.log("userinfo ", userinfo);
         }).catch(error=>{
-            console.log("error getting current user info");
+            console.log("error getting current user info: ", error);
         });
     }, []);
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from 'axios';
-import Home from "./Home"
-import UserHome from "./UserHome";
-import Loading from "./Loading";
+import Home from "../Home/Home"
+import UserHome from "../UserHome/UserHome";
+import Loading from "../../Loading";
 
 function App() {
     const [auth, setAuth] = useState(null);

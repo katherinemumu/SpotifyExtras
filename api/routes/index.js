@@ -7,7 +7,6 @@ require('dotenv').config()
 
 
 router.get("/", function(req, res) {
-  console.log("inside /");
   res.render('index', { title: 'Express' , res: res});
 });
 

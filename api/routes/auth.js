@@ -71,23 +71,7 @@ router.get('/callback', function(req, res) {
 
                 req.session.jwt = jwt.sign(sessionJWTObject, process.env.JWT_SECRET_KEY)
 
-                console.log("REQ.SESSION.JWT", req.session.jwt);
-
                 return res.redirect('/');
-
-                // var options = {
-                //     url: 'https://api.spotify.com/v1/me',
-                //     headers: { 'Authorization': 'Bearer ' + access_token },
-                //     json: true
-                // };
-                //
-                // // we can also pass the token to the browser to make requests from there
-                // res.redirect('../?' +
-                //     querystring.stringify({
-                //         access_token: access_token,
-                //         refresh_token: refresh_token
-                //     })
-                // );
 
             } else {
                 res.redirect('/#' +
@@ -100,7 +84,7 @@ router.get('/callback', function(req, res) {
 });
 
 router.get("/current-session", (req, res) => {
-    console.log("INSIDE CURRENT SESSION", req.session.jwt);
+    console.log("INSIDE CURRENT SESSION");
    jwt.verify(req.session.jwt, process.env.JWT_SECRET_KEY, (err, token) => {
             if(err || !token) {
                 res.send(false);

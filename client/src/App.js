@@ -23,7 +23,6 @@ function App() {
         return <Loading/>
     } else if (auth) {
         const token = auth.token;
-        console.log("WE CAN LOAD USER HOME NOW", token);
         return <UserHome auth={auth}/>
     }
     return <Home/>

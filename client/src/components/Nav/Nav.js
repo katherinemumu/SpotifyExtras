@@ -1,17 +1,17 @@
 import React from 'react'
-import Link from "../Link/Link";
+import { Link } from 'react-router-dom';
+import './nav.css';
 
 function Nav(props) {
     const items = [
-        { title: 'Wrapped (Google)', url: 'google.com' },
-        { title: 'Playlists (Amazon)', url: 'amazon.ca' },
+        { title: 'Wrapped (Google)', url: "http://www.google.com" },
+        { title: 'Playlists (Amazon)', url: "http://www.amazon.ca" },
     ];
 
     return (
-      <nav>
-          {items.map((lnk) => (
-              <Link lnk={lnk} key={lnk.title} />
-          ))}
+      <nav className={"navbar"}>
+          <Link to={"/wrapped"}>Wrapped</Link>
+          <Link to={"/playlists"}>Playlists</Link>
       </nav>
     );
 }

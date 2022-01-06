@@ -3,7 +3,7 @@ import "./App.css";
 import axios from 'axios';
 import Home from "../Home/Home"
 import UserHome from "../UserHome/UserHome";
-import Loading from "../../Loading";
+import Loading from "../Loading/Loading";
 import Header from "../Header/Header";
 
 function App() {

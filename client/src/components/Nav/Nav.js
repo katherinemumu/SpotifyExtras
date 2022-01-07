@@ -10,8 +10,10 @@ function Nav(props) {
 
     return (
       <nav className={"navbar"}>
+          <Link to={"/"}>{props.title}</Link>
           <Link to={"/wrapped"}>Wrapped</Link>
           <Link to={"/playlists"}>Playlists</Link>
+          <a target="_blank" href={"auth/logout"}>Logout</a>
       </nav>
     );
 }

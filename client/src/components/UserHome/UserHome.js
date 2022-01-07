@@ -1,11 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import axios from "axios";
 import './UserHome.css'
-import Header from "../Header/Header";
-import Main from "../Main/Main";
 
 function UserHome(props) {
-    const token = props.auth.token;
+    const token = props.token;
 
     const [userinfo, setUserInfo] = useState();
 
@@ -21,12 +19,9 @@ function UserHome(props) {
 
     return (
         <div className="App">
-            <Header title={"SpotifyExtras"}/>
             <header className="App-header">
                 <p className="hello">Hello, {userinfo}!</p>
-                <a className="App-link" target="_blank" href={"auth/logout"}>Logout</a>
             </header>
-            <Main/>
         </div>
     )
 }

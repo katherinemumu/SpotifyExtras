@@ -1,7 +1,9 @@
 function Wrapped(props) {
     return (
-        <div>
-            <p>WRAPPED</p>
+        <div className="App">
+            <header className="App-header">
+                <p>Wrapped!</p>
+            </header>
         </div>
     );
 }

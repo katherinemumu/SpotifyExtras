@@ -4,24 +4,23 @@ let request = require('request');
 const https = require('https');
 let querystring = require('querystring');
 
-router.get("/userinfo", (req, res) => {
-    console.log("IN INFO/USERINFO ");
+router.get("/listAll", (req, res) => {
+    console.log("IN PLAYLISTS/LISTALL ");
 
     let obj = JSON.parse(req.query["token"]);
     let access_token = obj.token;
-    console.log("access_token ", access_token);
 
     var options = {
-        url: 'https://api.spotify.com/v1/me',
-        headers: { 'Authorization': 'Bearer ' + access_token },
-        json: true
+        url: `https://api.spotify.com/v1/me/playlists`,
+        headers: { 'Authorization': 'Bearer ' + access_token, 'Content-Type': 'application/json' } //
+        // json: true
     };
 
     // use the access token to access the Spotify Web API
     request.get(options, function(error, response, body) {
         console.log(options);
         console.log(body);
-        res.json(body.display_name);
+        // res.json(body.display_name);
     });
 });
 

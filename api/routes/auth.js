@@ -16,7 +16,7 @@ let content = {};
 
 router.get("/login", (req, res, next) => {
     let state = '1234567890123456'
-    let scope = 'user-read-private user-read-email';
+    let scope = 'user-read-private user-read-email playlist-modify-private playlist-read-collaborative playlist-read-private playlist-modify-public';
     res.cookie(stateKey, state);
 
     res.redirect('https://accounts.spotify.com/authorize?' +

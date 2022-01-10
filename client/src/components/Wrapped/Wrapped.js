@@ -1,4 +1,6 @@
 function Wrapped(props) {
+    const token = props.token;
+
     return (
         <div className="App">
             <header className="App-header">

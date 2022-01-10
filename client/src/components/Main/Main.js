@@ -14,10 +14,10 @@ function Main(props) {
             <Header title={"SpotifyExtras"}/>
             <Switch>
                 <Route path={"/wrapped"}>
-                    <Wrapped/>
+                    <Wrapped token={token}/>
                 </Route>
                 <Route path={"/playlists"}>
-                    <Playlists/>
+                    <Playlists token={token}/>
                 </Route>
                 <Route path={"/"}>
                     <UserHome token={token}/>

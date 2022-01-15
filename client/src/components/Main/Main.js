@@ -21,7 +21,7 @@ function Main(props) {
                     <Playlists token={token}/>
                 </Route>
                 <Route path={"/tracklist/:id"}>
-                    <Tracklist/>
+                    <Tracklist token={token}/>
                 </Route>
                 <Route path={"/"}>
                     <UserHome token={token}/>

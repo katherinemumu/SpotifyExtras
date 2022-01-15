@@ -6,22 +6,24 @@ function Tracklist(props) {
     const [tracklist, setTracklist] = useState([]);
 
     const id = useParams().id;
+    const token = props.token;
 
-    // const { href } = location.state;
-
-    // useEffect(() => {
-    //     console.log(location.state);
-    // }, []);
+    useEffect(() => {
+        axios.get('/playlists/tracklist', { params: { id: {id}, token: {token} } }).then(({data}) => {
+            console.log(data);
+            setTracklist(data);
+        }).catch(error=>{
+            console.log("error getting tracklist: ", error);
+        });
+    }, []);
 
     return (
         <div className="App">
-            <p>{id}</p>
-            {/*<p>{props.location.href}</p>*/}
-            {/*{tracklist.map((item) => (*/}
-            {/*    <p>item.title item.artist</p> */}
-            {/*))}        */}
+            {tracklist.map((item) => (
+                <p>{item.name} - {item.artist}</p>
+            ))}
         </div>
     );
-}
+};
 
 export default Tracklist;

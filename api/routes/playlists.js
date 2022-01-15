@@ -18,9 +18,24 @@ router.get("/listAll", (req, res) => {
 
     // use the access token to access the Spotify Web API
     request.get(options, function(error, response, body) {
-        console.log(options);
-        console.log(body);
-        // res.json(body.display_name);
+        body = JSON.parse(body);
+        let playlistInfo = [];
+        // console.log(body.items, "LENGTHHHHH ", body.items.length);
+        console.log(body.items[1]);
+        for(var i = 0; i < body.items.length; i++) {
+            let item = body.items[i];
+            var info = {
+                url: item.external_urls.spotify,
+                name: item.name,
+                owner: item.owner.display_name,
+                description: item.description,
+                image: item.images[0],
+                id: item.id,
+                numTracks: item.tracks.total
+            }
+            playlistInfo.push(info);
+        }
+        res.send(playlistInfo);
     });
 });
 

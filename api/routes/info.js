@@ -19,7 +19,6 @@ router.get("/userinfo", (req, res) => {
 
     // use the access token to access the Spotify Web API
     request.get(options, function(error, response, body) {
-        console.log(options);
         console.log(body);
         res.json(body.display_name);
     });
